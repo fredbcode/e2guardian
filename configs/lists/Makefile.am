@@ -1,10 +1,10 @@
 DISTCLEANFILES = Makefile.in \
-		       weightedphraselist bannedphraselist exceptionphraselist \
-		       bannedsitelist bannedurllist
+		bannedphraselist bannedsitelist bannedurllist \
+		exceptionphraselist nocheckcertsitelist weightedphraselist
 
 DGDATADIR = $(DGCONFDIR)/lists
 
-SUBDIRS = phraselists . blacklists authplugins bannedrooms
+SUBDIRS = phraselists . authplugins bannedrooms
 
 if NEED_CSLISTS
 SUBDIRS += contentscanners
@@ -13,7 +13,7 @@ if NEED_DMLISTS
 SUBDIRS += downloadmanagers
 endif
 
-WLISTS = bannedextensionlist bannediplist bannedmimetypelist \
+WLISTS = nocheckcertsitelist bannedextensionlist bannediplist bannedmimetypelist \
 	 bannedregexpurllist bannedsitelist \
 	 bannedsearchlist bannedsslsitelist bannedurllist \
 	 contentregexplist exceptioniplist exceptionsitelist \
@@ -29,10 +29,10 @@ WLISTS = bannedextensionlist bannediplist bannedmimetypelist \
 	 localgreysitelist localgreysslsitelist localgreyurllist \
 	 refererexceptionsitelist refererexceptionurllist searchregexplist \
 	 embededreferersitelist embededrefererurllist \
-	 authexceptionsitelist authexceptionurllist \
-	 urlredirectregexplist
+	 authexceptionsitelist authexceptionurllist bannedsitelistwithbypass \
+	 urlredirectregexplist sslsiteregexplist
  
-EXTRA_DIST = bannedextensionlist bannediplist bannedmimetypelist \
+EXTRA_DIST = nocheckcertsitelist bannedextensionlist bannediplist bannedmimetypelist \
 	 bannedregexpurllist bannedsitelist.in bannedurllist.in \
 	 contentregexplist exceptioniplist exceptionsitelist \
 	 exceptionurllist filtergroupslist greysitelist \
@@ -40,7 +40,7 @@ EXTRA_DIST = bannedextensionlist bannediplist bannedmimetypelist \
 	 exceptionphraselist.in bannediplist exceptioniplist urlregexplist \
 	 exceptionregexpurllist exceptionextensionlist exceptionmimetypelist \
 	 exceptionfilesitelist bannedregexpheaderlist headerregexplist \
-	 exceptionfileurllist logsitelist logurllist logregexpurllist 
+	 exceptionfileurllist logsitelist logurllist logregexpurllist sslsiteregexplist
 
 install-data-local: 
 	$(mkinstalldirs) $(DESTDIR)$(DGDATADIR) && \

@@ -59,6 +59,7 @@ IDENTAUTH_SOURCE = authplugins/ident.cpp
 IPAUTH_SOURCE = authplugins/ip.cpp
 PORTAUTH_SOURCE = authplugins/port.cpp
 DIGESTAUTH_SOURCE = authplugins/digest.cpp
+HEADERAUTH_SOURCE = authplugins/header.cpp
 
 if ENABLE_NTLM
 NTLMAUTH_SOURCE = authplugins/ntlm.cpp
@@ -73,7 +74,7 @@ DNSAUTH_SOURCE =
 endif
 
 
-sbin_PROGRAMS = e2guardian 
+sbin_PROGRAMS = e2guardian
 
 e2guardian_CXXFLAGS = $(PCRE_CFLAGS) $(AM_CXXFLAGS)
 e2guardian_LDADD = $(PCRE_LIBS) $(AM_LIBS)
@@ -99,7 +100,6 @@ e2guardian_SOURCES = String.cpp String.hpp \
                        UDSocket.cpp UDSocket.hpp \
                        SysV.cpp SysV.hpp \
                        ListContainer.cpp ListContainer.hpp \
-                       Auth.cpp Auth.hpp \
                        HTMLTemplate.cpp HTMLTemplate.hpp \
                        LanguageContainer.cpp LanguageContainer.hpp \
                        DynamicURLList.cpp DynamicURLList.hpp \
@@ -114,15 +114,18 @@ e2guardian_SOURCES = String.cpp String.hpp \
                        ConfigVar.cpp ConfigVar.hpp \
                        ContentScanner.cpp ContentScanner.hpp \
 		       SocketArray.cpp SocketArray.hpp \
-                       e2guardian.cpp \
-		       Plugin.hpp \
+                       e2guardian.cpp Plugin.hpp \
+		       LOptionContainer.cpp LOptionContainer.hpp \
                        CertificateAuthority.cpp CertificateAuthority.hpp \
+		       Queue.hpp \
+		       Auth.cpp Auth.hpp \
 		       $(ICAPSCAN_SOURCE) \
-		       $(KAVDSCAN_SOURCE) $(CLAMDSCAN_SOURCE) \
-		       $(AVASTDSCAN_SOURCE) \
-		       $(COMMANDLINE_SOURCE) \
-		       $(DEFAULTDM_SOURCE) $(FANCYDM_SOURCE) \
-		       $(TRICKLEDM_SOURCE) $(PROXYAUTH_SOURCE) \
-		       $(IDENTAUTH_SOURCE) $(IPAUTH_SOURCE) \
-		       $(DNSAUTH_SOURCE) $(PORTAUTH_SOURCE) \
-		       $(NTLMAUTH_SOURCE) $(DIGESTAUTH_SOURCE)
+                       $(KAVDSCAN_SOURCE) $(CLAMDSCAN_SOURCE) \
+                       $(AVASTDSCAN_SOURCE) \
+                       $(COMMANDLINE_SOURCE) \
+                       $(DEFAULTDM_SOURCE) $(FANCYDM_SOURCE) \
+                       $(TRICKLEDM_SOURCE) $(PROXYAUTH_SOURCE) \
+                       $(IDENTAUTH_SOURCE) $(IPAUTH_SOURCE) \
+                       $(DNSAUTH_SOURCE) $(PORTAUTH_SOURCE) \
+                       $(NTLMAUTH_SOURCE) $(DIGESTAUTH_SOURCE) \
+		       $(HEADERAUTH_SOURCE) 
